@@ -1,0 +1,261 @@
+﻿<UserControl x:Class="NirIdentifier.SystemSetup.MethodInfoPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:btn="clr-namespace:NirIdentifier.Common"
+             xmlns:para="clr-namespace:NirIdentifier.SystemSetup"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:NirIdentifier.SystemSetup"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="350">
+    <UserControl.Resources>
+        <btn:ComponentTypeConvert x:Key="ComponentTypeConvert"/>
+        <btn:ComponentTypeDescriptoinConvert x:Key="DescriptionConvert"/>
+        <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}" x:Key="dataFromEnum">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="btn:ComponentType" />
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
+        <ObjectDataProvider x:Key="InterTypeList" ObjectType="{x:Type local:MethodInfoPanel}" MethodName="GetComboBoxList">
+        </ObjectDataProvider>
+
+
+        <btn:CheckedVisibilityConvert x:Key="CheckedVisibilityConvert"/>
+    </UserControl.Resources>
+    <Grid TextBlock.FontSize="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="基本信息" Margin="5, 0, 5, 0">
+            <Grid Margin="0, 5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="模型名称：" VerticalAlignment="Center" TextAlignment="Right"  Margin="0,5,0,0" />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="txtItemName"  Margin="0,5,0,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="模型文件：" VerticalAlignment="Center" TextAlignment="Right"  Margin="0,5,0,0" />
+                <TextBox Grid.Row="1" Grid.Column="1" Name="txtMethodName"  Margin="0,5,0,0"/>
+                <Button Grid.Row="1" Grid.Column="2" Name="btnBrowse" Width="25" Height="20" Content="..." Margin="2" Click="btnBrowse_Click" />
+                <para:ScanParameterEditor Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="panelScanParameter"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid Grid.Row="1" x:Name="gridTargetComponent" Grid.Column="0" AutoGenerateColumns="False" SelectionMode="Single" Margin="5" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="主成分名" Binding="{Binding Path=Name,Mode=OneWay}" Width="5*" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="检测类型" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=type, Converter={StaticResource ComponentTypeConvert}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Name="comboBoxComponentName" Text="{Binding Path=type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ComponentTypeConvert}}" 
+                                              SelectedValue="{Binding Path=type, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}"
+                                              ItemsSource="{Binding Source={StaticResource dataFromEnum} , Converter={StaticResource DescriptionConvert}, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding Path=type, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}" IsEditable="False" DropDownOpened="APIComboBoxComponentName_DropDownOpened" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="定性阈值" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ccFactor}" Visibility="{Binding Path=IndentEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=ccFactor,Mode=TwoWay}" Visibility="{Binding Path=IndentEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="定量系数" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=kFactor}" Visibility="{Binding Path=QuantEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=kFactor}" Visibility="{Binding Path=QuantEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="定量下限" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=downThreshold,Mode=TwoWay}" Visibility="{Binding Path=QuantEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=downThreshold,Mode=TwoWay}" Visibility="{Binding Path=QuantEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="定量上限" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=upThreshold}" Visibility="{Binding Path=QuantEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=upThreshold,Mode=TwoWay}" Visibility="{Binding Path=QuantEditable}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid Grid.Row="2" x:Name="gridInterfentComponent" Grid.Column="0" AutoGenerateColumns="False" SelectionMode="Single" Margin="5" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="辅料名" Binding="{Binding Path=name,Mode=OneWay}" Width="4*" IsReadOnly="True" />
+                <DataGridTemplateColumn Header="identType0" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=identType0, Converter={StaticResource ComponentTypeConvert}}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Text="{Binding Path=identType0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ComponentTypeConvert}}" 
+                                              SelectedValue="{Binding Path=identType0, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}"
+                                              ItemsSource="{Binding Source={StaticResource InterTypeList}, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding Path=identType0, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}" IsEditable="False"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="ccFactor0" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ccFactor0}" Visibility="{Binding Path=showTextBox0}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=ccFactor0,Mode=TwoWay}" Visibility="{Binding Path=showTextBox0}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="identType1" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=identType1, Converter={StaticResource ComponentTypeConvert}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Text="{Binding Path=identType1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ComponentTypeConvert}}" 
+                                              SelectedValue="{Binding Path=identType1, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}"
+                                              ItemsSource="{Binding Source={StaticResource InterTypeList}, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding Path=identType1, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}" IsEditable="False"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="ccFactor1" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ccFactor1}" Visibility="{Binding Path=showTextBox1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=ccFactor1,Mode=TwoWay}" Visibility="{Binding Path=showTextBox1}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="identType2" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=identType2, Converter={StaticResource ComponentTypeConvert}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Text="{Binding Path=identType2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ComponentTypeConvert}}" 
+                                              SelectedValue="{Binding Path=identType2, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}"
+                                              ItemsSource="{Binding Source={StaticResource InterTypeList}, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding Path=identType2, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}" IsEditable="False"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="ccFactor2" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ccFactor2}" Visibility="{Binding Path=showTextBox2}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=ccFactor2,Mode=TwoWay}" Visibility="{Binding Path=showTextBox2}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="identType3" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=identType3, Converter={StaticResource ComponentTypeConvert}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Text="{Binding Path=identType3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ComponentTypeConvert}}" 
+                                              SelectedValue="{Binding Path=identType3, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}"
+                                              ItemsSource="{Binding Source={StaticResource InterTypeList}, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding Path=identType3, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}" IsEditable="False"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="ccFactor3" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ccFactor3}" Visibility="{Binding Path=showTextBox3}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=ccFactor3,Mode=TwoWay}" Visibility="{Binding Path=showTextBox3}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="identType4" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=identType4, Converter={StaticResource ComponentTypeConvert}}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <ComboBox Text="{Binding Path=identType4, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ComponentTypeConvert}}" 
+                                              SelectedValue="{Binding Path=identType4, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}"
+                                              ItemsSource="{Binding Source={StaticResource InterTypeList}, UpdateSourceTrigger=PropertyChanged}" 
+                                              SelectedItem="{Binding Path=identType4, Mode=TwoWay, Converter={StaticResource ComponentTypeConvert}}" IsEditable="False"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="ccFactor4" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Path=ccFactor4}" Visibility="{Binding Path=showTextBox4}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Path=ccFactor4,Mode=TwoWay}" Visibility="{Binding Path=showTextBox4}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>        
+        </DataGrid>
+    </Grid>
+</UserControl>

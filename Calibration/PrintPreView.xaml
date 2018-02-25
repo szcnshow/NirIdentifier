@@ -1,0 +1,8 @@
+﻿<Window x:Class="NirIdentifier.Calibration.PrintPreView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PrintPreView" Height="600" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <DocumentViewer Name="DocViewer"/>
+    </Grid>
+</Window>

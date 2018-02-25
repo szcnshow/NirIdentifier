@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NirIdentifier.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="SettingFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NirIdentifier.setting</Value>
+    </Setting>
+    <Setting Name="settingFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">setting</Value>
+    </Setting>
+    <Setting Name="iniFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">IniFile</Value>
+    </Setting>
+    <Setting Name="dataFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data</Value>
+    </Setting>
+    <Setting Name="reportFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Report</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

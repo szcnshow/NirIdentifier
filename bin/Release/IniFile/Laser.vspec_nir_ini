@@ -1,0 +1,69 @@
+[instrumentName]
+instrumentName = VSPEC_NIR
+
+[Accessory Bus]
+arduinoPort = 4
+sensors = Click...
+humidityThreshold = 100
+
+[Process]
+advancedProcessButton = Click...
+phaseCorrection = magnitude
+finalDataType = SingleBeam
+zeroFill = 8
+firstX = 4000.0
+apodization = Blackman-Harris 3 Term
+lastX = 12000.0
+
+[Advanced FFT]
+ifgBlcOrder = offset
+normalizeSinglebeam = False
+mertzPoints = 256
+laserFrequency =0.639781813358017
+
+[Storage]
+fileNaming = Time-Stamped
+filenameSeed = 1
+whatBkgToSave = [u'ifg', u'sbm']
+timeStampedFolders = True
+promptForFilename = False
+backupDirectory = 
+backupsEnabled = False
+whatToSave = [u'ifg', u'sbm', u'trn', u'abs']
+filenamePrefix = relative intensity
+collectionDirectory = C:\Users\Public\Documents\eftir\data
+
+[Collection]
+scanDirection = Both
+backgroundScans = 64
+loadMethod = Load...
+sampleScans = 64
+saveMethod = Save...
+gain = 1
+velocity = 15
+resolution = 4.0
+titleTemplate = $SCANSsc $DATE $TIME
+
+[Instrument]
+sendCommands = False
+term = Click...
+disconnect = Click...
+ftdIndex = 0
+ifgDivisor = 5592405.0
+commandFile = 
+
+[Repeat Sampling]
+sampleFast = True
+maxRepeatSamples = 50
+samplingFrequency = 00:00:00
+samplingStop = Forever
+startNow = True
+startTime = 00:00:00
+samplingNumSamples = 10
+useMultifile = False
+samplingDuration = 00:00:00
+
+[whatToSave]
+samplesToSave = ifg;sbm;trn;abs
+bkgToSave = ifg;sbm
+

@@ -1,0 +1,75 @@
+﻿<Window x:Class="NirIdentifier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:screen="clr-namespace:NirIdentifier"
+        xmlns:xcal="clr-namespace:NirIdentifier.Calibration"
+        xmlns:cov="clr-namespace:NirIdentifier.Common"
+        Title="拉曼药品快速检测(NirIdentifier)" Height="600" Width="850" WindowState="Maximized" Icon="/NirIdentifier;component/Images/MainIcon.ico" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Resources>
+        <cov:TimeTicker x:Key="ticker" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ToolBar Grid.Row="0">
+            <ToolBar.Effect>
+                <DropShadowEffect ShadowDepth="4"/>
+            </ToolBar.Effect>
+            <Button Margin="2,0,2,0" ToolTip="返回主界面" Name="btnHomePage" Click="btnToolButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Height="24" Width="24" Source="/NirIdentifier;component/Images/home_s4.png" />
+                    <TextBlock Text="主界面" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="10,0,2,0" ToolTip="校正和验证仪器性能" Name="btnVerify" Click="btnToolButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Height="24" Width="24" Source="/NirIdentifier;component/Images/Verify_24.png"/>
+                    <TextBlock Text="仪器校验" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="10,0,2,0" ToolTip="扫描光谱，不进行分析" Name="btnNormalScan" Click="btnToolButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Height="24" Width="24" Source="/NirIdentifier;component/Images/scanner_24.png"/>
+                    <TextBlock Text="常规扫描" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="10,0,2,0" ToolTip="扫描药品样品并检测" Name="btnSampleDetect" Click="btnToolButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Height="24" Width="24" Source="/NirIdentifier;component/Images/detect_24.png"/>
+                    <TextBlock Text="药品检测" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button Margin="10,0,2,0" ToolTip="设置系统环境参数" Name="btnSetup" Click="btnToolButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image  Height="24" Width="24" Source="/NirIdentifier;component/Images/setup_24.png"/>
+                    <TextBlock Text="系统设置" VerticalAlignment="Center" Margin="2,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </ToolBar>
+        <Image Grid.Row="1" Grid.RowSpan="2" Source="/NirIdentifier;component/Images/background.jpg" Stretch="Fill" />
+        <Grid Grid.Row="1" Name="GridScreenContainer">
+            <screen:MainSelect x:Name="mainSelelectScreen"/>
+        </Grid>
+        <Button Grid.Row="1" Name="btnTest" Width="100" Height="30" Content="测试" Click="btnTest_Click" />
+        <StatusBar Grid.Row="2" Height="30" TextBlock.FontSize="14" BorderBrush="Black" BorderThickness="1">
+            <StatusBarItem Margin="0,0,20,0">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="imgCCDStatus"   Stretch="None" Margin="10,0,0,0" Source="/NirIdentifier;component/Images/Warning_16.png" Visibility="Visible"/>
+                    <TextBlock Name="txtCCDStatus" Text="CCD温度:25℃" VerticalAlignment="Center" Margin="5,0,0,0" MouseLeftButtonDown="txtCCDStatus_MouseLeftButtonDown" />
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem Margin="0,0,20,0">
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="imgLaserStatus" Source="/NirIdentifier;component/Images/unknown_16.png" Stretch="None" Margin="10,0,0,0" Visibility="Collapsed"/>
+                    <TextBlock Name="txtLaserStatus" Text="激光器状态: OFF" VerticalAlignment="Center" Margin="5,0,0,0" Visibility="Collapsed"/>
+                </StackPanel>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Grid.Column="1" Text="{Binding Source={StaticResource ticker}, Path=Now.Now, Mode=OneWay, StringFormat='yyyy-MM-dd HH:mm:ss'}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5,0,15,0"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="NirIdentifier.Calibration.Accuracy"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="200" d:DesignWidth="300"
+	>
+
+    <Grid>
+        <GroupBox Name="rootGroup">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Image Grid.Column="0" Name="imageResult" Source="/NirIdentifier;component/Images/Unknown_32.png" Stretch="None" Margin="5"/>
+                    <TextBlock Name="txtCalibrateName" Text="波数精度测试（cm-1）" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="12pt"/>
+                </StackPanel>
+                <TextBlock Text="水峰：" Grid.Row="1" FontSize="11pt" Margin="0,5,0,0"/>
+                <StackPanel Name="ppStack" Grid.Row="2" Orientation="Horizontal" Background="Yellow" TextBlock.FontSize="11pt" Margin="0,5,0,0">
+                    <TextBlock Text="阈值："/>
+                    <Border BorderThickness="1"  BorderBrush="Black">
+                        <TextBlock Name="txtAccThresold" Width="60" Text="0.1" TextAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="测量值：" Margin="10,0,0,0"/>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <TextBlock Name="txtRealAccValue" Width="60"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                     <TextBlock Text="聚苯乙烯：" Grid.Row="3" FontSize="11pt" Margin="0,5,0,0"/>
+                    <!--<CheckBox Margin="147,0,0,0" Grid.Column="1" Name="polyCheckShowSpectrum" Content="显示光谱" VerticalAlignment="Bottom"  Unchecked="polyCheckShowSpectrum_UnChecked" Checked="polyCheckShowSpectrum_Checked" />-->
+                </StackPanel>
+                <StackPanel Name="devStack" Grid.Row="4" Orientation="Horizontal" Background="Yellow" TextBlock.FontSize="11pt" Margin="0,5,0,0">
+                    <TextBlock Text="阈值："/>
+                    <Border BorderThickness="1"  BorderBrush="Black">
+                        <TextBlock Name="txtPloyThresold" Text="0.5" TextAlignment="Center" Width="60"/>
+                    </Border>
+                    <TextBlock Text="测量值：" Margin="10,0,0,0"/>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <TextBlock Name="txtRealPloyValue" Width="60"/>
+                    </Border>
+                </StackPanel>
+                <Grid Grid.Row="5" Height="20" Margin="0,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ProgressBar Grid.Column="0" Name="scanProgress" BorderBrush="White" Background="AliceBlue" />
+                    <CheckBox Grid.Column="1" Name="checkShowSpectrum" Content="显示光谱" VerticalAlignment="Bottom"  Margin="10,0,0,0" Unchecked="checkShowSpectrum_UnChecked" Checked="checkShowSpectrum_Checked" />
+                </Grid>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

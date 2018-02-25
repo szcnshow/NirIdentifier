@@ -1,0 +1,73 @@
+﻿<Button x:Class="NirIdentifier.Common.ImageButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Name="uc"
+             d:DesignHeight="150" d:DesignWidth="150">
+    <Button.Template>
+        <ControlTemplate>
+        <Grid>
+            <Image Name="imgDefault" Source="{Binding Path=NormalImage,ElementName=uc}" Stretch="{Binding Path=ImageStretch,ElementName=uc}"></Image>
+            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" />
+        </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsEnabled" Value="False">
+                    <Setter Property="Image.Source" TargetName="imgDefault" Value="{Binding Path=DisabledImage,ElementName=uc}"></Setter>
+                </Trigger>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter Property="Image.Source" TargetName="imgDefault" Value="{Binding Path=FocusedImage,ElementName=uc}"></Setter>
+                </Trigger>
+                <Trigger Property="Button.IsPressed" Value="True">
+                    <Setter Property="Image.Source" TargetName="imgDefault" Value="{Binding Path=PressedImage,ElementName=uc}"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Button.Template>
+    <Button.Resources>
+        <Style TargetType="Button">
+            <!--Set to true to not get any properties from the themes.-->
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Image Name="imgDefault" Source="{Binding Path=NormalImage,ElementName=uc}" Stretch="{Binding Path=ImageStretch,ElementName=uc}"></Image>
+                            <ContentPresenter Content="{TemplateBinding Property=ContentControl.Content}" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Button.IsPressed" Value="True">
+                                <Setter Property="Image.Source" TargetName="imgDefault" Value="{Binding Path=PressedImage,ElementName=uc}"></Setter>
+                                <Setter Property="UIElement.Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" Color="Black" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="Button.IsMouseOver" Value="True">
+                                <Setter Property="Image.Source" TargetName="imgDefault" Value="{Binding Path=FocusedImage,ElementName=uc}"></Setter>
+                                <Setter Property="UIElement.Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" Color="White" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="Button.IsEnabled" Value="False">
+                                <Setter Property="Image.Source" TargetName="imgDefault" Value="{Binding Path=DisabledImage,ElementName=uc}"></Setter>
+                                <Setter Property="UIElement.Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="10" Color="White" Direction="0" Opacity="0.6" RenderingBias="Performance" ShadowDepth="0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Button.Resources>
+    <Grid>
+            
+    </Grid>
+</Button>

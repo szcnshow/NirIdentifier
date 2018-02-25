@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="NirIdentifier.Detect.ComponentDisplayPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:cov="clr-namespace:NirIdentifier.Common"
+        xmlns:src="clr-namespace:NirIdentifier.Detect"
+        xmlns:graph="clr-namespace:Ai.Hong.CommonLibrary;assembly=CommonLibrary"
+        mc:Ignorable="d" Name="UserControl"
+        d:DesignHeight="150" d:DesignWidth="350">
+    <UserControl.Resources>
+        <cov:ImageConvert x:Key="ImgConvert"/>
+        <cov:ComponentTypeConvert x:Key="ComponentTypeConvert"/>
+    </UserControl.Resources>
+    <Grid>
+        <TabControl Grid.Row="1" Margin="0,5,0,0">
+            <TabItem Header="检测结果">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Name="gridResult" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Name="detailsCol" Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Name="imgResult" Stretch="None" Source="/NirIdentifier;component/Images/IdentYes_128.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Grid Grid.Column="1" VerticalAlignment="Center" Margin="40,0,0,0" TextBlock.FontSize="18">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Name="txtQuantResult" Text="定量分析：" VerticalAlignment="Center"/>
+                            <Image Grid.Row="0" Grid.Column="1" Name="imgQuantResult" Stretch="None" Source="/NirIdentifier;component/Images/CircleOK.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="定性检测：" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                            <Image Grid.Row="1" Grid.Column="1" Name="imgIdentifyResult" Stretch="None" Source="/NirIdentifier;component/Images/CircleOK.png" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="检出辅料：" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Name="txtAddinResult" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,0" TextWrapping="Wrap" />
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="非法添加：" VerticalAlignment="Center" Margin="0,5,0,0"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Name="txtInvalidResult" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,0" TextWrapping="Wrap" />
+                        </Grid>
+                    </Grid>
+                    <TextBlock Name="txtTotalResult" Grid.Row="1" Text="通过" FontSize="18pt" FontWeight="Bold" VerticalAlignment="Center" Margin="0, 0.2cm" HorizontalAlignment="Center" Visibility="Collapsed"/>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabOptical" Header="拉曼谱图" Visibility="{Binding ElementName=UserControl, Path=OpticalVisible}">
+                <graph:OneSpectrumChart x:Name="panelGraphic"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

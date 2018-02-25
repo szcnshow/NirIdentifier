@@ -1,0 +1,234 @@
+﻿<Page x:Class="NirIdentifier.Resources.PrintModelEditor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:result="clr-namespace:NirIdentifier.Detect"
+        Title="Window1" Height="300" Width="300">
+    <FlowDocument PageWidth="21cm" PageHeight="29.7cm" ColumnWidth="20cm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+        <FlowDocument.Resources>
+            <Style TargetType="Border" x:Key="Border_RB">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            </Style>
+            <Style TargetType="Border" x:Key="Border_B">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            </Style>
+            <Style TargetType="Border" x:Key="Border_R">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,0,1,0"/>
+            </Style>
+            <Style TargetType="Border" x:Key="Border_TRB">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,1,1,1"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TextName">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TextNameSmall">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TextData">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="ColumnDefinition" x:Key="NameCellWidth">
+                <Setter Property="Width" Value="2.5cm"/>
+            </Style>
+            <Style TargetType="ColumnDefinition" x:Key="LargeCellWidth">
+                <Setter Property="Width" Value="3.0cm"/>
+            </Style>
+            <Style TargetType="RowDefinition" x:Key="NameRowHeight">
+                <Setter Property="Height" Value="0.75cm"/>
+            </Style>
+        </FlowDocument.Resources>
+        <BlockUIContainer Name="rootBlock">
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="18cm" Name="rootBorder" Margin="1.5cm, 1.8cm, 0, 0">
+                <StackPanel  Width="18cm" >
+                    <Border Height="1.5cm" BorderBrush="Black" BorderThickness="0,0,0,1">
+                        <!--报告标题-->
+                        <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="16" FontWeight="Bold" LineHeight="22">
+                            <Underline><Run Text="XXX检测中心" Name="IDUnit"/></Underline><LineBreak/>近红外药品快检报告
+                        </TextBlock>
+                    </Border>
+                    <Grid>
+                        <!--时间，地点，类型，数据文件信息-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Style="{StaticResource NameCellWidth}"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Style="{StaticResource NameCellWidth}"/>
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Height="1.2cm"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                        </Grid.RowDefinitions>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+                            <TextBlock Style="{StaticResource TextName}" Text="检   测   信   息" FontSize="18" FontWeight="Bold"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="1" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="样品编号"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="1" Grid.Column="1">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtsampleNumber"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="1" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="检测日期"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="1" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}"  Name="txtidentTime"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="2" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="模型名称"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="2" Grid.Column="1" >
+                            <TextBlock Style="{StaticResource TextData}"  Name="txtidentModel"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="2" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="测样方法"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="2" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}"  Name="txtscanType"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="3" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="判定阈值"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="3" Grid.Column="1" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtidentThresold"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="3" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="分析值"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="3" Grid.Column="3" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtidentValue"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="4" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="光谱文件" />
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtfilename" TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4">
+                            <TextBlock Style="{StaticResource TextName}" Text="样    品   信    息" FontSize="18" FontWeight="Bold"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="6" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="批准文号"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="6" Grid.Column="1" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtlicenseCode"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="6" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="生产厂家"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="6" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtproductUnit"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="7" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="药品名称"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="7" Grid.Column="1">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtchemicalName" />
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="7" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="商品名称"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="7" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtcommercialName" />
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="8" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="剂型"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="8" Grid.Column="1" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtform"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="8" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="规格"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="8" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtspecification"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="9" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="生产批号"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="9" Grid.Column="1" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtbatchNumber"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="9" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="生产日期"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="9" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtproductTime"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="10" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="有效期"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="10" Grid.Column="1" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtvalidMonth"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="10" Grid.Column="2">
+                        </Border>
+                        <Border Style="{StaticResource Border_RB}"  Grid.Row="10" Grid.Column="3">
+                        </Border>
+                    </Grid>
+                    <Border Style="{StaticResource Border_RB}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Height="7cm" Name="spectrumBorder">
+                    </Border>
+                    <Border Style="{StaticResource Border_R}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Height="7cm" Name="borderComponents">
+                        <Image Name="imgAllResult" Stretch="None" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <Grid>
+                        <!--备注，操作员，审查，审核-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Style="{StaticResource NameCellWidth}"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Style="{StaticResource NameCellWidth}"/>
+                            <ColumnDefinition />
+                            <ColumnDefinition Style="{StaticResource NameCellWidth}"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Style="{StaticResource NameRowHeight}"/>
+                            <RowDefinition Style="{StaticResource NameRowHeight}" Height="1cm"/>
+                        </Grid.RowDefinitions>
+                        <Border Style="{StaticResource Border_TRB}"  Grid.Row="0" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="备注："/>
+                        </Border>
+                        <Border Style="{StaticResource Border_TRB}" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" >
+                            <TextBlock Style="{StaticResource TextData}" Name="txtmemo"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_R}"  Grid.Row="1" Grid.Column="0">
+                            <TextBlock Style="{StaticResource TextName}" Text="检测人员："/>
+                        </Border>
+                        <Border Style="{StaticResource Border_R}"  Grid.Row="1" Grid.Column="1">
+                            <TextBlock Style="{StaticResource TextData}" Name="txtidentOperator"/>
+                        </Border>
+                        <Border Style="{StaticResource Border_R}"  Grid.Row="1" Grid.Column="2">
+                            <TextBlock Style="{StaticResource TextName}" Text="现场审查："/>
+                        </Border>
+                        <Border Style="{StaticResource Border_R}"  Grid.Row="1" Grid.Column="3">
+                            <TextBlock Style="{StaticResource TextData}" />
+                        </Border>
+                        <Border Style="{StaticResource Border_R}"  Grid.Row="1" Grid.Column="4">
+                            <TextBlock Style="{StaticResource TextName}" Text="审核："/>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </BlockUIContainer>
+    </FlowDocument>
+</Page>

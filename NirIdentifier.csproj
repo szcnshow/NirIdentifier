@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0ED825BA-8BB9-41D3-9C46-738D5EF04BAF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NirIdentifier</RootNamespace>
+    <AssemblyName>NirIdentifier</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>mainIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="alglibnet2">
+      <HintPath>..\RFDA\RFDA\bin\Release\alglibnet2.dll</HintPath>
+    </Reference>
+    <Reference Include="BasicAlgorithm, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\BasicAlgorithm.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\CommonLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\RFDA\RFDA\bin\Release\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NirAlgorithm">
+      <HintPath>..\NirLib\NirAlgorithm\bin\Release\NirAlgorithm.dll</HintPath>
+    </Reference>
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calibration\Accuracy.xaml.cs">
+      <DependentUpon>Accuracy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\EachCalibratePanel.xaml.cs">
+      <DependentUpon>EachCalibratePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\LineSlopeTest.xaml.cs">
+      <DependentUpon>LineSlopeTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\Class\MeasureParameter.cs" />
+    <Compile Include="Calibration\NirCalibration.xaml.cs">
+      <DependentUpon>NirCalibration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\PPDeviation.xaml.cs">
+      <DependentUpon>PPDeviation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\PrintModelEditor.xaml.cs">
+      <DependentUpon>PrintModelEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Calibration\PrintPreView.xaml.cs">
+      <DependentUpon>PrintPreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DrugAnalyte.cs" />
+    <Compile Include="Common\ModelInfoPanel.xaml.cs">
+      <DependentUpon>ModelInfoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProcessWaitDialog.xaml.cs">
+      <DependentUpon>ProcessWaitDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Detect\ReportPrint.xaml.cs">
+      <DependentUpon>ReportPrint.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileFormat\FileOpenDlg.xaml.cs">
+      <DependentUpon>FileOpenDlg.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainSelect.xaml.cs">
+      <DependentUpon>MainSelect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NormalScan\NormalScan.xaml.cs">
+      <DependentUpon>NormalScan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offline\ModelSelector.xaml.cs">
+      <DependentUpon>ModelSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\PrintModelEditor.xaml.cs">
+      <DependentUpon>PrintModelEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\DrugInfoPanel.xaml.cs">
+      <DependentUpon>DrugInfoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\ModelCreator.xaml.cs">
+      <DependentUpon>ModelCreator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\ProgramInfoPanel.xaml.cs">
+      <DependentUpon>ProgramInfoPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\SetupPanel.xaml.cs">
+      <DependentUpon>SetupPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SystemSetup\SpectrumRegionSelector.xaml.cs">
+      <DependentUpon>SpectrumRegionSelector.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommonClass.cs" />
+    <Compile Include="Common\ImageButton.xaml.cs">
+      <DependentUpon>ImageButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\InputText.xaml.cs">
+      <DependentUpon>InputText.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ProcessDlg.xaml.cs">
+      <DependentUpon>ProcessDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\RFDADatabase.cs" />
+    <Compile Include="Detect\BarCodeReader.cs" />
+    <Compile Include="Detect\DetectPanel.xaml.cs">
+      <DependentUpon>DetectPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Detect\DialogSelectMethod.xaml.cs">
+      <DependentUpon>DialogSelectMethod.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Detect\DrugSearch.xaml.cs">
+      <DependentUpon>DrugSearch.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Detect\NewSample.xaml.cs">
+      <DependentUpon>NewSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Detect\PrintPreView.xaml.cs">
+      <DependentUpon>PrintPreView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offline\SampleResult.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SampleResult.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Offline\SpecFileIdentify.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>SpecFileIdentify.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow1.xaml.cs">
+      <DependentUpon>MainWindow1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\DrugDetectSel.png" />
+    <Resource Include="Images\DrugDetectUnsel.png" />
+    <Resource Include="Images\error_32.png" />
+    <Resource Include="Images\HomePageSel.png" />
+    <Resource Include="Images\HomePageUnsel.png" />
+    <Resource Include="Images\CalibrateSel.png" />
+    <Resource Include="Images\CalibrateUnsel.png" />
+    <Resource Include="Images\SystemSetupSel.png" />
+    <Resource Include="Images\SystemSetupUnsel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Calibration\CalibrationReport_All.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Page Include="Calibration\Accuracy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calibration\EachCalibratePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calibration\LineSlopeTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Calibration\NirCalibration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <EmbeddedResource Include="Calibration\OQReportPanel\OQBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calibration\OQReportPanel\OQCommonReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <Page Include="Calibration\PPDeviation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <EmbeddedResource Include="Calibration\PQReportPanel\LineNoise.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calibration\PQReportPanel\WaveNumAcc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Calibration\PQReportPanel\YaxisRep.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <Page Include="Calibration\PrintModelEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Calibration\PrintPreView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\DictionaryRes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ImageButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\InputText.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ModelInfoPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\ProcessDlg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ProcessWaitDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detect\DetectPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detect\DialogSelectMethod.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detect\DrugSearch.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detect\NewSample.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detect\PrintPreView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Detect\ReportPrint.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ExpanderStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FileFormat\FileOpenDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offline\ModelSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offline\SampleResult.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Offline\SpecFileIdentify.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainSelect.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="NormalScan\NormalScan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <EmbeddedResource Include="Resources\IdentifyReport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Page Include="Resources\PrintModelEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SystemSetup\DrugInfoPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SystemSetup\ModelCreator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SystemSetup\ProgramInfoPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SystemSetup\SetupPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SystemSetup\SpectrumRegionSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MainSelectBG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Add_16.png" />
+    <Resource Include="Images\Background1.jpg" />
+    <Resource Include="Images\Calibration_OK.png" />
+    <Resource Include="Images\Calibration_sample.jpg" />
+    <Resource Include="Images\Calibration_Unknow.png" />
+    <Resource Include="Images\CannotFind.png" />
+    <Resource Include="Images\CircleOK.png" />
+    <Resource Include="Images\content_16.png" />
+    <Resource Include="Images\continue_search.png" />
+    <Resource Include="Images\culculator.png" />
+    <Resource Include="Images\detect.png" />
+    <Resource Include="Images\detect_24.png" />
+    <Resource Include="Images\Edit_16.png" />
+    <Resource Include="Images\Error.png" />
+    <Resource Include="Images\Error1_16.png" />
+    <Resource Include="Images\Error_16.png" />
+    <Resource Include="Images\exit.png" />
+    <Resource Include="Images\export.png" />
+    <Resource Include="Images\factory.png" />
+    <Resource Include="Images\home_s4.png" />
+    <Resource Include="Images\IdentNo_128.png" />
+    <Resource Include="Images\IdentYes_128.png" />
+    <Resource Include="Images\import.png" />
+    <Resource Include="Images\LaserPower_max.jpg" />
+    <Resource Include="Images\LaserPower_min.jpg" />
+    <Resource Include="Images\list.png" />
+    <Resource Include="Images\List1_16.png" />
+    <Resource Include="Images\LoadMethodIcon.gif" />
+    <Resource Include="Images\load_database.png" />
+    <Resource Include="Images\minus_16.png" />
+    <Resource Include="Images\NA.png" />
+    <Resource Include="Images\New_16.png" />
+    <Resource Include="Images\nextArrow.png" />
+    <Resource Include="Images\NoMethod_16.png" />
+    <Resource Include="Images\notebook_16.png" />
+    <Resource Include="Images\OffsetCalPrompt.png" />
+    <Resource Include="Images\OK.png" />
+    <Resource Include="Images\OK1_16.png" />
+    <Resource Include="Images\OK_16.png" />
+    <Resource Include="Images\OK_32.png" />
+    <Resource Include="Images\package.png" />
+    <Resource Include="Images\page1_16.png" />
+    <Resource Include="Images\power.png" />
+    <Resource Include="Images\prevArrow.png" />
+    <Resource Include="Images\print1.png" />
+    <Resource Include="Images\Remove1.png" />
+    <Resource Include="Images\Return_16.png" />
+    <Resource Include="Images\SaveMethodIcon.gif" />
+    <Resource Include="Images\scanner_24.png" />
+    <Resource Include="Images\search.png" />
+    <Resource Include="Images\setup_24.png" />
+    <Resource Include="Images\specifaction.png" />
+    <Resource Include="Images\start.png" />
+    <Resource Include="Images\start_calibration_16.png" />
+    <Resource Include="Images\ThresholdError.png" />
+    <Resource Include="Images\TrangleError.png" />
+    <Resource Include="Images\TrangleWarning.png" />
+    <Resource Include="Images\tree_16.png" />
+    <Resource Include="Images\tree_close.png" />
+    <Resource Include="Images\tree_expand.png" />
+    <Resource Include="Images\Unknown.png" />
+    <Resource Include="Images\Unknown_128.png" />
+    <Resource Include="Images\unknown_16.png" />
+    <Resource Include="Images\unpackage.png" />
+    <Resource Include="Images\Verify_24.png" />
+    <Resource Include="Images\Warning_16.png" />
+    <Resource Include="Images\XCalibrationStandard.png" />
+    <Resource Include="Images\XCalPrompt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\OfflineSel.png" />
+    <Resource Include="Images\OfflineUnsel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mainIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mainIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\NormalScanSel.png" />
+    <Resource Include="Images\NormalScanUnsel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\VspecLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Calibrate.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Unknown_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VspecNIRTypeLib">
+      <Guid>{F9FAADCF-6740-11E3-9853-005056C00008}</Guid>
+      <VersionMajor>0</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpectrumAlgorithm\SpectrumAlgorithm.csproj">
+      <Project>{5fc27e67-5908-48a2-900d-c864bdc10a86}</Project>
+      <Name>SpectrumAlgorithm</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,165 @@
+﻿<!--<Page x:Class="NirIdentifier.Calibration.PQReportPanel.YaxisRep"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="YaxisRepA">-->
+
+    <FlowDocument PageWidth="21cm" PageHeight="29.7cm" ColumnWidth="20cm"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              >
+
+        <FlowDocument.Resources>
+            <Style TargetType="Border" x:Key="Border_RB">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,0,1,1"/>
+            </Style>
+            <Style TargetType="Border" x:Key="Border_B">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            </Style>
+            <Style TargetType="Border" x:Key="Border_R">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,0,1,0"/>
+            </Style>
+            <Style TargetType="Border" x:Key="Border_TRB">
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="BorderThickness" Value="0,1,1,1"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TextName">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TextNameSmall">
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBlock" x:Key="TextData">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="ColumnDefinition" x:Key="NameCellWidth">
+                <Setter Property="Width" Value="2.5cm"/>
+            </Style>
+            <Style TargetType="ColumnDefinition" x:Key="LargeCellWidth">
+                <Setter Property="Width" Value="3.0cm"/>
+            </Style>
+            <Style TargetType="RowDefinition" x:Key="NameRowHeight">
+                <Setter Property="Height" Value="0.75cm"/>
+            </Style>
+        </FlowDocument.Resources>
+        <BlockUIContainer Name="rootBlock">
+            <Border TextBlock.FontFamily="SimSun" HorizontalAlignment="Center" VerticalAlignment="Center" Width="18cm" Name="rootBorder" Margin="2cm, 2cm, 0, 0">
+                <Grid TextBlock.FontSize="20pt">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" Background="Blue" Margin="0,0">
+                            <TextBlock Text="Vspec 近红外仪器PQ自检报告" FontSize="30" HorizontalAlignment="Center" Foreground="White" Margin="0,0.4cm"/>
+                            </Border>
+                            <Image Grid.Column="1"  Margin="0.5cm,0,0,0" Source="/NirIdentifier;component/mainIcon.ico" />
+                        </Grid>
+                    </Grid>
+                    <Border Background="Blue" Grid.Row="1" Margin="0,0.2cm">
+                        <TextBlock Text="吸收精度重复性测试 - 玻璃滤波片  光谱图" FontSize="13pt" HorizontalAlignment="Center" Foreground="White" Margin="0,0.1cm"/>
+                    </Border>
+                <Border Grid.Row="2" Name="borderGraphic" Height="7cm" />
+                <Border Grid.Row="3" Name="borderGraphicPath">
+
+                    </Border>
+                    <Border Background="Blue" Grid.Row="4" Margin="0,0.2cm">
+                        <TextBlock Text="吸收精度重复性测试 - 玻璃滤波片  光谱图" FontSize="13pt" HorizontalAlignment="Center" Foreground="White" Margin="0,0.1cm"/>
+                    </Border>
+                <Border Grid.Row="5" Name="para" Margin="2.2cm,0,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0">
+                                <Grid TextBlock.FontSize="11pt">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="分辨率：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="resolution"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Text="cm-1" Margin="0.1cm,0.1cm,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="扫描次数：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="scans"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <Grid TextBlock.FontSize="11pt">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="增益：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="gain"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="填零：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="zeroFill"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2">
+                            <Grid TextBlock.FontSize="11pt">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="相位校正：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="phaseCorrection"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="去趾函数：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="apodization"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3">
+                            <Grid TextBlock.FontSize="11pt">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0.1cm">
+                                    <TextBlock Text="扫描速度：" Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                    <TextBlock Name="velocity"  Margin="0,0.1cm" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+        </BlockUIContainer>
+    </FlowDocument>
+<!--</Page>-->

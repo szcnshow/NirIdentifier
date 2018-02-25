@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<SettingFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <runing_parameter isSimulator="false" needCalibration="true" calibartionTime="24" lastCalibartionTime="0001-01-01T00:00:00" Unit="" Operator="" SerialNo="" InstrumentTimeOut="60" isDebug="false">
+    <savePath>E:\Project\NirIdentifier\bin\Release\Save_Rfdi</savePath>
+    <savePathType>LicenseCode</savePathType>
+    <database>NirIdentifier_DB.mdb</database>
+    <usbDeviceID>VID_0403&amp;PID_6001</usbDeviceID>
+    <scanParameter>
+      <scanSettingFile>DrugScanSetting.vspec_nir_ini</scanSettingFile>
+      <scanCount>16</scanCount>
+    </scanParameter>
+  </runing_parameter>
+  <calibratePara>
+    <laserPara ActualBand="0" DevMax="0" MinDev="0" targetPeak="7181.68" verfyPeak1="7232.29" verfyPeak2="7242.77" firstX="7230" lastX="7245" thresold="0.1" repeatCount="1">
+      <iniFile>IniFile\Laser.vspec_nir_ini</iniFile>
+    </laserPara>
+    <accuracyPara PloyTargetX="4571.0" PloyThresold="0.5" ActualBand="0" DevMax="0" MinDev="0" targetPeak="7181.68" verfyPeak1="7232.29" verfyPeak2="7242.77" firstX="7230" lastX="7245" thresold="0.1" repeatCount="10">
+      <iniFile>IniFile\Accuracy.vspec_nir_ini</iniFile>
+    </accuracyPara>
+    <resolutionTestPara ResolutionThresold="4" targetPeak="7294.8">
+      <iniFile>IniFile\Resolution.vspec_nir_ini</iniFile>
+    </resolutionTestPara>
+    <lineNoiseTest firstX="5900" lastX="6100" repeatCount="10" PPThresold="0.1">
+      <iniFile>IniFile\ITSN.vspec_nir_ini</iniFile>
+    </lineNoiseTest>
+    <lineSlopeTestPara>
+      <data1>
+        <data>
+          <WaveNumRange>4500-4900</WaveNumRange>
+          <lineLimit>98-102</lineLimit>
+        </data>
+        <data>
+          <WaveNumRange>6000-6400</WaveNumRange>
+          <lineLimit>99-101</lineLimit>
+        </data>
+        <data>
+          <WaveNumRange>7500-7900</WaveNumRange>
+          <lineLimit>99-101</lineLimit>
+        </data>
+        <data>
+          <WaveNumRange>9000-9400</WaveNumRange>
+          <lineLimit>98-102</lineLimit>
+        </data>
+      </data1>
+      <iniFile>IniFile\ITSN.vspec_nir_ini</iniFile>
+    </lineSlopeTestPara>
+    <yaxisRepPara firstX="4500" lastX="10000" YaxisRepThresold="0.8">
+      <iniFile>IniFile\ITGF.vspec_nir_ini</iniFile>
+    </yaxisRepPara>
+    <accuracyTestOQ PloyTargetX="4571.0" PloyThresold="0.5" ExpectedBand="0" ActualBand="0" DevMax="0" MinDev="0" targetPeak="7181.68" verfyPeak1="7232.29" verfyPeak2="7242.77" firstX="7230" lastX="7245" thresold="0.1" repeatCount="0">
+      <iniFile>IniFile\Accuracy.vspec_nir_ini</iniFile>
+    </accuracyTestOQ>
+    <waveNumRepTestPara DevMax="0" MinDev="0" TargetPeak="7181.68" repeatCount="6" transRepThresold="0.05">
+      <iniFile>IniFile\Accuracy.vspec_nir_ini</iniFile>
+    </waveNumRepTestPara>
+    <energyDisPara TargetX="10000" engerDisThresold="0.1">
+      <iniFile>IniFile\ITSN.vspec_nir_ini</iniFile>
+    </energyDisPara>
+    <snrPara firstX="5900" lastX="6100" DevfirstX="4500" DevlastX="10000" DevThresold="0.5" repeatCount="10" RMSThresold="0" PPThresold="0.1">
+      <MaxRef>0</MaxRef>
+      <iniFile>IniFile\ITSN.vspec_nir_ini</iniFile>
+    </snrPara>
+    <transRepTest firstX="6500" lastX="10000" minValue="0.02" repeatCount="10">
+      <iniFile>IniFile\ITSN.vspec_nir_ini</iniFile>
+    </transRepTest>
+  </calibratePara>
+  <dictionary>
+    <scanTypes>
+      <scanType>直接接触测</scanType>
+      <scanType>隔铝塑测</scanType>
+      <scanType>去糖衣测片芯</scanType>
+      <scanType>隔玻璃瓶底测</scanType>
+      <scanType>使用液体附件测</scanType>
+    </scanTypes>
+    <operators>
+      <operator>艾宏</operator>
+    </operators>
+    <forms>
+      <form>片剂</form>
+      <form>胶囊</form>
+    </forms>
+    <licenseTypes>
+      <licenseType>批准文号</licenseType>
+      <licenseType>注册证号</licenseType>
+    </licenseTypes>
+  </dictionary>
+  <models>
+    <model>
+      <licenseCode>国药准字H20052346 </licenseCode>
+      <chemicalName>阿莫西林克拉维酸钾分散片(7:1) </chemicalName>
+      <form>片剂(分散)</form>
+      <specification>0.5g(阿莫西林0.4375g与克拉维酸0.0625g) </specification>
+      <productUnit>上海新亚药业闵行有限公司 </productUnit>
+      <thresold>0.97</thresold>
+      <files>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20052346-阿莫西林克拉维酸钾分散片_2.SPC</filename>
+        </file>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20052346-阿莫西林克拉维酸钾分散片_3.SPC</filename>
+        </file>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20052346-阿莫西林克拉维酸钾分散片_4.SPC</filename>
+        </file>
+      </files>
+      <regions>
+        <region>
+          <firstX>4000</firstX>
+          <lastX>10000</lastX>
+        </region>
+      </regions>
+    </model>
+    <model>
+      <licenseCode>国药准字H20030112</licenseCode>
+      <chemicalName>氯雷他定片</chemicalName>
+      <form>片剂</form>
+      <specification>10mg</specification>
+      <productUnit>成都恒瑞制药有限公司</productUnit>
+      <thresold>0.97</thresold>
+      <files>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20030112氯雷他定片_1.SPC</filename>
+        </file>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20030112氯雷他定片_2.SPC</filename>
+        </file>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20030112氯雷他定片_3.SPC</filename>
+        </file>
+      </files>
+      <regions>
+        <region>
+          <firstX>4000</firstX>
+          <lastX>10000</lastX>
+        </region>
+      </regions>
+    </model>
+    <model>
+      <licenseCode>国药准字H20094047</licenseCode>
+      <chemicalName>氟康唑片</chemicalName>
+      <form>片剂</form>
+      <specification>每粒50mg</specification>
+      <productUnit>四川科伦药业股份有限公司</productUnit>
+      <thresold>0.97</thresold>
+      <files>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20094047_氟康唑片_1.SPC</filename>
+        </file>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20094047_氟康唑片_2.SPC</filename>
+        </file>
+        <file>
+          <filename>E:\Vspec Test Spectrum\国药准字H20094047_氟康唑片_3.SPC</filename>
+        </file>
+      </files>
+      <regions>
+        <region>
+          <firstX>4000</firstX>
+          <lastX>10000</lastX>
+        </region>
+      </regions>
+    </model>
+  </models>
+</SettingFile>

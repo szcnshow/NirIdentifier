@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="NirIdentifier.MainSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:btn="clr-namespace:Ai.Hong.CommonLibrary.Controls;assembly=CommonLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <UserControl.Resources>
+        <Style TargetType="Button" x:Key="btnStyle">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Name="gridButton" CornerRadius="10">
+                            <Grid >
+                                <Rectangle RadiusX="10" RadiusY="10" Name="blackRect" StrokeThickness="1" Stroke="Black" Margin="0,0, 2, 2"/>
+                                <Rectangle RadiusX="10" RadiusY="10" Name="whiteRect" StrokeThickness="1" Stroke="White" Margin="2,2,0,0"/>
+                                <Rectangle RadiusX="10" RadiusY="10" Name="normalRect" StrokeThickness="1" Stroke="#FFd1d1d1"/>
+                                <Grid Margin="0,0,10,0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="whiteRect" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="blackRect" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="normalRect" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="gridButton" Property="Background" Value="#FFb2ccff"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="False">
+                                <Setter TargetName="whiteRect" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="blackRect" Property="Visibility" Value="Collapsed"/>
+                                <Setter TargetName="normalRect" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="gridButton" Property="Background" Value="#FFaaabad"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                        
+                </Setter.Value>
+            </Setter>
+        </Style>        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="2" Source="/NirIdentifier;component/Images/MainSelectBG.jpg" Stretch="Fill"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="近红外分析系统" Foreground="White" FontFamily="YouYuan" FontWeight="Bold" FontSize="40pt" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="Black" Direction="0" ShadowDepth="5" Opacity="1" />
+                </TextBlock.Effect>
+            </TextBlock>
+            <TextBlock Text="Quick Drug ID by NIR" Visibility="Collapsed" Foreground="White" FontWeight="Bold" FontSize="30pt" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Modern No. 20">
+                <TextBlock.Effect>
+                    <DropShadowEffect Color="Black" Direction="0" ShadowDepth="5" Opacity="1" />
+                </TextBlock.Effect>
+            </TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,0,0,30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Style="{StaticResource btnStyle}" Width="150" Height="60" Click="btnDetect_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/NirIdentifier;component/Images/DrugDetectSel.png" Stretch="None"/>
+                    <TextBlock Text="联机检测" FontSize="14pt" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <!--联机检测-->
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="2" Style="{StaticResource btnStyle}" Width="150" Height="60" Margin="20,0,0,0" Click="btnOffline_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/NirIdentifier;component/Images/OfflineSel.png" Stretch="None"/>
+                    <TextBlock Text="离线分析" FontSize="14pt" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <!--离线分析-->
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="3" Style="{StaticResource btnStyle}" Width="150" Height="60" Margin="20,0,0,0" Click="btnCalibration_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/NirIdentifier;component/Images/CalibrateSel.png" Stretch="None"/>
+                    <TextBlock Text="仪器验证" FontSize="14pt" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <!--仪器验证-->
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="4" Style="{StaticResource btnStyle}" Width="150" Height="60" Margin="20,0,0,0" Click="btnNormalScan_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/NirIdentifier;component/Images/NormalScanSel.png" Stretch="None"/>
+                    <TextBlock Text="常规扫描" FontSize="14pt" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <!--常规扫描-->
+                </StackPanel>
+            </Button>
+            <Button Grid.Column="5" Style="{StaticResource btnStyle}" Width="150" Height="60" Margin="20,0,0,0" Click="btnSetup_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/NirIdentifier;component/Images/SystemSetupSel.png" Stretch="None"/>
+                    <TextBlock Text="系统设置" FontSize="14pt" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                </StackPanel>
+            </Button>
+        </Grid> 
+    </Grid>
+</UserControl>

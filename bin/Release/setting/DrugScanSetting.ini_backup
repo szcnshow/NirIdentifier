@@ -1,0 +1,64 @@
+[instrumentName]
+instrumentName = VSPEC_NIR
+
+[Process]
+advancedProcessButton = Click...
+phaseCorrection = mertz
+finalDataType = Absorbance
+zeroFill = 1
+firstX = 4200.0
+apodization = Beer-Norton Med
+lastX = 9000.0
+
+[Advanced FFT]
+ifgBlcOrder = offset
+normalizeSinglebeam = False
+mertzPoints = 256
+laserFrequency = 0.636
+
+[Storage]
+fileNaming = Time-Stamped
+filenameSeed = 1
+whatBkgToSave = [u'ifg', u'sbm']
+timeStampedFolders = True
+promptForFilename = False
+backupDirectory = 
+backupsEnabled = False
+whatToSave = [u'ifg', u'sbm', u'trn', u'abs']
+filenamePrefix = relative intensity
+collectionDirectory = C:\Users\Public\Documents\eftir\data
+
+[Collection]
+backgroundScans = 32
+loadMethod = Load...
+sampleScans = 32
+saveMethod = Save...
+gain = 4
+velocity = 15
+resolution = 8.0
+titleTemplate = $SCANSsc $DATE $TIME
+
+[Instrument]
+sendCommands = False
+term = Click...
+disconnect = Click...
+ftdIndex = 0
+diagnostics = Click...
+ifgDivisor = 5592405.0
+commandFile = 
+
+[Repeat Sampling]
+sampleFast = True
+maxRepeatSamples = 50
+samplingFrequency = 00:00:00
+samplingStop = Forever
+startNow = True
+startTime = 00:00:00
+samplingNumSamples = 10
+useMultifile = False
+samplingDuration = 00:00:00
+
+[whatToSave]
+samplesToSave = ifg;sbm;trn;abs
+bkgToSave = ifg;sbm
+

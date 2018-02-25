@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="NirIdentifier.Detect.DatabaseTree"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cov="clr-namespace:NirIdentifier.Common"
+             xmlns:para="clr-namespace:NirIdentifier.SystemSetup"
+             xmlns:dw="clr-namespace:NirIdentifier.Detect"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <cov:ImageConvert x:Key="ImgConvert"/>
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+            <Setter Property="FontWeight" Value="Normal" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <HierarchicalDataTemplate x:Key="CheckBoxItemTemplate" DataType ="{x:Type cov:MethodTreeNode}" ItemsSource="{Binding Children, Mode=OneWay}">
+            <StackPanel Orientation="Horizontal" Margin="1">
+                <Image Source="{Binding IconFile, Mode=OneWay, Converter={StaticResource ImgConvert}}" Width="16" Height="16" Margin="3,0,3,0"/>
+                <ContentPresenter Content="{Binding Name, Mode=OneWay}" Margin="2,0"/>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+    </UserControl.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="txtSearch" Grid.Column="0" Text=""/>
+            <Button Name="btnSearch" Grid.Column="1" ToolTip="搜索" Margin="2,0,0,0" Click="btnSearch_Click">
+                <Image Source="/NirIdentifier;component/Images/search.png" Stretch="None" />
+            </Button>
+            <Button Name="btnTreeExpand" Grid.Column="2" ToolTip="展开方法树" Margin="2,0,0,0" Click="btnTreeExpand_Click">
+                <Image Source="/NirIdentifier;component/Images/tree_expand.png" Stretch="None"/>
+            </Button>
+            <Button Name="btnTreeClose" Grid.Column="3" ToolTip="折叠方法树" Margin="2,0,0,0" Click="btnTreeClose_Click">
+                <Image Source="/NirIdentifier;component/Images/tree_close.png" Stretch="None" />
+            </Button>
+            <Button Name="btnLoadDatabase" Grid.Column="4" ToolTip="加载数据库" Margin="2,0,0,0" Click="btnLoadDatabase_Click">
+                <Image Source="/NirIdentifier;component/Images/LoadMethodIcon.gif" Stretch="None" />
+            </Button>
+        </Grid>
+        <TreeView Name="treeDatabase" Grid.Row="1" Margin="0,5,0,0" ItemTemplate="{StaticResource CheckBoxItemTemplate}" TextBlock.FontSize="14" SelectedItemChanged="treeDatabase_SelectedItemChanged" />
+        <Grid Name="gridBrowseMethod" Grid.Row="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Text="方法：" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" Name="txtMethodName" TextChanged="txtMethodName_TextChanged" />
+            <Button Grid.Column="2" Name="btnBrowse" Content="..." Width="20" Click="btnBrowse_Click" />
+            <para:ScanParameterEditor Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" x:Name="panelScanParameter"/>
+        </Grid>
+
+    </Grid>
+</UserControl>
